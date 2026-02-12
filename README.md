@@ -1,0 +1,2 @@
+# StudentHub-Frontend
+StudentHub is a fully interactive, production-style frontend web application designed to manage student records with a clean UI and efficient client-side data handling. Built using pure HTML, CSS, and  JavaScript, this project demonstrates strong command over core frontend fundamentals without relying on external frameworks. The application simulates real-world CRUD operations while maintaining persistent state using browser localStorage, delivering a smooth and dynamic user experience.
