@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentHub | Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="StudentHub.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>
+                    <i class="fas fa-graduation-cap"></i>
+                    StudentHub
+                </h1>
+                <p>Manage student records with ease. Add, edit, and delete student information with a modern interface.</p>
+            </div>
+        </header>
+
+        <!-- Stats Dashboard -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-info">
+                    <h3 id="totalStudents">0</h3>
+                    <p>Total Students</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-male"></i>
+                </div>
+                <div class="stat-info">
+                    <h3 id="maleStudents">0</h3>
+                    <p>Male Students</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-female"></i>
+                </div>
+                <div class="stat-info">
+                    <h3 id="femaleStudents">0</h3>
+                    <p>Female Students</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="stat-info">
+                    <h3 id="averageAge">0</h3>
+                    <p>Average Age</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="main-grid">
+            <!-- Form Panel -->
+            <div class="form-panel">
+                <div class="panel-header">
+                    <h2 id="formTitle">
+                        <i class="fas fa-user-plus"></i>
+                        Add New Student
+                    </h2>
+                    <div class="form-mode" id="formMode"></div>
+                </div>
+
+                <form id="studentForm">
+                    <input type="hidden" id="studentId">
+                    
+                    <div class="form-group">
+                        <label for="fullName" class="form-label">
+                            <i class="fas fa-user"></i>
+                            Full Name
+                        </label>
+                        <input type="text" id="fullName" class="form-control" placeholder="Enter name" required>
+                        <div class="error-message" id="nameError">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span>Please enter a valid name</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">
+                            <i class="fas fa-envelope"></i>
+                            Email Address
+                        </label>
+                        <input type="email" id="email" class="form-control" placeholder="Enter email" required>
+                        <div class="error-message" id="emailError">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span>Please enter a valid email address</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone" class="form-label">
+                            <i class="fas fa-phone"></i>
+                            Phone Number
+                        </label>
+                        <div class="input-with-icon">
+                            <input type="tel" id="phone" class="form-control" placeholder="Enter contact number" maxlength="10" required>
+                            <div class="input-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                        </div>
+                        <div class="error-message" id="phoneError">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span>Phone number must be exactly 10 digits</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="age" class="form-label">
+                            <i class="fas fa-birthday-cake"></i>
+                            Age
+                        </label>
+                        <input type="number" id="age" class="form-control" placeholder="Enter age" min="16" max="40" required>
+                        <div class="error-message" id="ageError">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span>Age must be between 16 and 40</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="gender" class="form-label">
+                            <i class="fas fa-venus-mars"></i>
+                            Gender
+                        </label>
+                        <select id="gender" class="form-control" required>
+                            <option value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="course" class="form-label">
+                            <i class="fas fa-book"></i>
+                            Course
+                        </label>
+                        <select id="course" class="form-control" required>
+                            <option value="">Select Course</option>
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="Civil">Civil Engineering</option>
+                            <option value="Mechanical">Mechanical Engineering</option>
+                            <option value="Ece">Electronics and Telecommunication</option>
+                            <option value="CsIt">Computer Science and Information Technology</option>
+                            <option value="Law">Law</option>
+                            <option value="Design">Design</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address" class="form-label">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Address
+                        </label>
+                        <textarea id="address" class="form-control" rows="3" placeholder="Enter address"></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary" id="submitBtn">
+                            <i class="fas fa-plus-circle"></i>
+                            Add Student
+                        </button>
+                        <button type="button" class="btn btn-secondary" id="cancelBtn" style="display: none;">
+                            <i class="fas fa-times"></i>
+                            Cancel
+                        </button>
+                        <button type="button" class="btn btn-secondary" id="clearBtn">
+                            <i class="fas fa-eraser"></i>
+                            Clear
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Table Panel -->
+            <div class="table-panel">
+                <div class="panel-header">
+                    <h2>
+                        <i class="fas fa-list"></i>
+                        Student Records
+                    </h2>
+                    <div class="student-count">
+                        <span id="recordCount">0</span> students
+                    </div>
+                </div>
+
+                <!-- Search and Filter -->
+                <div class="table-controls">
+                    <div class="search-box">
+                        <div class="search-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <input type="text" id="searchInput" class="form-control" placeholder="Search students by name, email, or course...">
+                    </div>
+                    <div class="filter-select">
+                        <select id="filterCourse" class="form-control">
+                            <option value="">All Courses</option>
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="Business Administration">Business Administration</option>
+                            <option value="Engineering">Engineering</option>
+                            <option value="Medicine">Medicine</option>
+                            <option value="Arts & Humanities">Arts & Humanities</option>
+                            <option value="Law">Law</option>
+                            <option value="Design">Design</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Student Table -->
+                <div class="table-container">
+                    <table class="student-table">
+                        <thead>
+                            <tr>
+                                <th>Student</th>
+                                <th>Course</th>
+                                <th>Age</th>
+                                <th>Gender</th>
+                                <th>Phone</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentsTableBody">
+                            <!-- Student rows will be inserted here -->
+                        </tbody>
+                    </table>
+                    
+                    <div id="emptyState" class="empty-state">
+                        <div class="empty-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <h3>No Students Found</h3>
+                        <p>Add your first student using the form on the left to get started.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>StudentHub &copy; 2023 | All student data is stored locally in your browser.</p>
+        </footer>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast">
+        <i class="fas fa-check-circle toast-icon"></i>
+        <span id="toastMessage">Student added successfully!</span>
+    </div>
+
+    <script src="StudentHub.js"></script>
+</body>
+</html>
